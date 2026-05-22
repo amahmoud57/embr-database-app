@@ -9,13 +9,9 @@ run:
 dependencies:
   - name: db
     type: postgres
-
-database:
-  enabled: true
-  engine: postgres
-  framework: raw
-  schema: db/schema.sql
-  seed: "psql `$DATABASE_URL -f db/seed.sql"
+    database:
+      migrate: "psql \"$DATABASE_URL\" -f db/schema.sql"
+      seed: "psql \"$DATABASE_URL\" -f db/seed.sql"
 
 static:
   spaFallback: true
